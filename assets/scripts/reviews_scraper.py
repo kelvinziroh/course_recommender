@@ -10,7 +10,7 @@ import time
 driver = webdriver.Firefox()
 
 # Get the webpage
-driver.get('https://www.udacity.com/catalog/all/any-price/any-school/any-skill/any-difficulty/any-duration/nanodegree%20program/most-popular/page-1')
+driver.get('https://www.udacity.com/catalog')
 # Create an empty dataframe
 df = pd.DataFrame()
 
@@ -18,7 +18,7 @@ for count in range(2):
     # Delay program until the DOM loads
     time.sleep(10)
     # Locate the course elements
-    course_elements = driver.find_elements(By.CLASS_NAME, 'css-c5zt4b')
+    course_elements = driver.find_elements(By.CLASS_NAME, 'css-1iwnh3v')
     # Scrape reviews from each course
     for i in range(len(course_elements)):
         # Create an empty list of dictionaries
@@ -30,11 +30,12 @@ for count in range(2):
         # Delay program until the DOM loads
         time.sleep(10)
         # Get the target element
-        course_element = driver.find_element(By.XPATH, f'//*[@id="__next"]/div/main/div/div/section/div[2]/div[2]/div/div/article[{i + 1}]')
+        # course_element = driver.find_element(By.XPATH, f'//*[@id="__next"]/div/main/div/div/section/div[2]/div[2]/div/div/article[{i + 1}]')
+        course_element = driver.find_element(By.XPATH, f'/html/body/div[1]/div/main/div[1]/div/div/section/div[2]/div[2]/div/div/article[1]')
         # Scroll the course element into view
         driver.execute_script('arguments[0].scrollIntoView(false);',course_element)
         # Get the course name
-        course_name = course_element.find_element(By.CLASS_NAME, 'css-1rsglaw').text
+        course_name = course_element.find_element(By.CLASS_NAME, 'css-c5zt4b').text
         # Display the current course being scraped
         print(f'Scraping {course_name.lower()} reviews...')
         # Delay the program until the element is in view
