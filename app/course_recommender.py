@@ -4,12 +4,12 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import streamlit as st
-from data_loader import loaded_df
+from data_loader import extract_reviews
 
 
 # Load DataFrame and store in session state
 # st.session_state.df = pd.read_csv("../assets/datasets/course_sentiments.csv")
-st.session_state.df = loaded_df
+st.session_state.df = extract_reviews()
 
 def main():
     df = st.session_state.df
