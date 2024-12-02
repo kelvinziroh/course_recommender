@@ -43,3 +43,35 @@ def extract_reviews():
     mydb.close()
     
     return loaded_df
+
+def persist_data(new_data):
+    # Load db connector details from the configuration file
+    with open("../assets/scripts/df_config.json") as config_file:
+        config = json.load(config_file)
+    
+    # Create a mysql connection
+    mydb = mysql.connector.connect(
+        host = config["host"],
+        user = config["user"],
+        password = config["password"],
+        database = config["database"]
+    )
+
+    # Create a cursor object
+    mycursor = mydb.cursor()
+
+    # SQL query all records from the course_reviews table
+    insert_query = """
+    INSERT INTO course_reviews (course_name, course_source, course_rating, course_review, sentiment)
+    VALUES (%s, %s, %s, %s, %s);
+    """
+    
+    # Execute the query with the data to be inserted
+    mycursor.execute(insert_query, new_data)
+    
+    # Commit the transaction
+    mydb.commit()
+    
+    # Close the cursor and connection
+    mycursor.close()
+    mydb.close()
