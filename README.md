@@ -57,3 +57,9 @@ The model we ended up going with was BERT as it registered slightly better perfo
 - Re-training or Fine-tuning LLMs for a specific task is computationally demanding in both time and computational resources
 
 ![computational_resources](assets/images/nvidia_gpu.png)
+
+### Results
+---
+The end product was a fine-tuned sentiment classifier, saved and restored to be used in an intergrated application to predict sentiment classes on new course review data and a labelled dataset on reviews' sentiments, persisted into a MySQL database.
+
+![sentiment_labeling](assets/images/sentiment_classification.png)
