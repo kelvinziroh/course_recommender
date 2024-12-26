@@ -16,7 +16,7 @@ They have been implemented in various pre-trained models that serve as a foundat
 
 ### Data Aquisition
 ---
-The project makes use of datasets from three different sources. We acquired a publicly available course review dataset on coursera courses and combined it with scraped course reviews from Udacity to have course reviews from two different MOOCs platforms. We also scraped mobile app reviews to use for training the model on sentiment classification.
+The project makes use of datasets from three different sources. We acquired a publicly available course review dataset on coursera courses and combined it with scraped course reviews from Udacity to have course reviews from two different MOOC platforms. We also scraped mobile app reviews to use for training the model on sentiment classification.
 
 ### Training and Validation
 ---
@@ -25,7 +25,7 @@ The existing course review dataset was highly imbalanced since it is biased towa
 
 ![Course ratings visualisation](assets/images/acquired_dataset.png)
 
-Since all we are interested in is capturing sentiment from text, we used the mobile app review dataset as a work-around, which has more than enough reviews on each rating category. It was acquired through scraping with the help of the google play scraper library which enabled us to carefully filter, sort the reviews based on the rating score of the applications. This was paramount in creating a balanced dataset that is reliable for re-training/fine-tuning the model for sentiment classification.
+Since all we are interested in is capturing sentiment from text, we used the mobile app review dataset as a work-around, which has more than enough reviews on each rating category. It was acquired through scraping with the help of the google play scraper library which enabled us to carefully filter and sort the reviews based on the rating score of the applications. This was paramount in creating a balanced dataset that is reliable for re-training/fine-tuning the model for sentiment classification.
 
 ![mobile app ratings visualisation](assets/images/training_dataset.png)
 
@@ -34,11 +34,11 @@ The training and validation history from the visualization below show that both 
 
 ![training_and_validation_hist](assets/images/training_and_validation_hist.png)
 
-We also visualize the confusion matrix just to see how the models performed in predicting each sentiment class. With the positive sentiment represented as 2, neutral sentiment represented as 1 and negative sentiment represented as 0, we notice that both models did relatively well classifying positive and neutral sentiments but had much more trouble classifying the neutral. We also notice from a glance that the BERT model performed better than the RoBERTa model at predicting each class.
+We also visualize the confusion matrix just to see how the models performed in predicting each sentiment class. With the positive sentiment represented as 0, neutral sentiment represented as 1 and negative sentiment represented as 2, we notice that both models did relatively well classifying positive and negative sentiments but had much more trouble classifying the neutral sentiments. We also notice from a glance that the BERT model performed better than the RoBERTa model at predicting each class.
 
 ![confusion_matrix](assets/images/confusion_matrix_comparison.png)
 
-The model we ended up going with was BERT as it registered slightly better performance metrics on the sentiment classification in comparison to RoBERTa
+The model we ended up selecting was BERT as it registered slightly better performance metrics on the sentiment classification in comparison to RoBERTa
 
 ![performance_metrics](assets/images/model_selection.png)
 
