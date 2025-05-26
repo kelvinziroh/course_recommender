@@ -34,7 +34,7 @@ class BertSentimentClassifier(nn.Module):
         return self.out(output)
 
 # Load the finetuned model weights
-model_path = '/Users/ziro/Developer/ongoing_projects/data_science/course_recommender/assets/model/best_bert_model_state.bin'
+model_path = '/Users/ziro/Developer/projects/ongoing_projects/data_science/course_recommender/assets/model/best_bert_model_state.bin'
 model = BertSentimentClassifier(len(sentiment_classes))
 model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu'), weights_only=True))
 
